@@ -1,13 +1,16 @@
 name: MLOps Pipeline CI
 
-# Trigger this script automatically every time code is pushed to your main branch
 on:
   push:
     branches: [ main ]
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest # Rent an isolated Linux machine on GitHub's cloud for free
+    runs-on: ubuntu-latest
+    
+    # FIX: Force the GitHub Actions runner to execute using modern Node 24
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
     - name: Check out your repository code
